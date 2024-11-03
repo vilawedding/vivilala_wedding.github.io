@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vinh And Lan Anh Wedding</title>
+    <link rel="icon" href="https://vs-photo.s3.ap-southeast-1.amazonaws.com/9082-b079-f7b272bf6d8b/66f8d23211b461727582770.jpg" type="image/jpeg">
+    <style>
+        .overflow-hidden {
+            overflow: hidden;
+        }
+        .w-full {
+            width: 100%;
+        }
+        .h-screen {
+            height: 100vh;
+            height: 100dvh; /* For dynamic viewport height */
+        }
+        .border-0 {
+            border-width: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="h-screen w-full overflow-hidden">
+    <iframe id="dynamicIframe" class="h-screen border-0 w-full" src=""></iframe>
+</div>
+<script>
+    // Sample JSON object for demonstration
+    const jsonData = {
+        'em_duc': "em-duc-rkbcm7",
+        // Other data can go here
+    };
+
+    // Default URL to use if no attSlug is found
+    const defaultUrl = "https://api.vesey.click/api/cards/lavi/live-html";
+
+    // Function to get the query parameter value from the URL
+    function getQueryParameter(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+    }
+
+    // Get the attSlug from the URL
+    const attSlug = getQueryParameter('attSlug');
+
+    // Build the new URL for the iframe based on attSlug or default
+    let iframeUrl;
+    if (attSlug && jsonData[attSlug]) {
+        // If attSlug is found, use its corresponding value
+        iframeUrl = `https://api.vesey.click/api/cards/vila/live-html?attSlug=${jsonData[attSlug]}`;
+    } else {
+        // Otherwise, use the default URL
+        iframeUrl = defaultUrl;
+    }
+
+    // Update the iframe src
+    document.getElementById('dynamicIframe').src = iframeUrl;
+</script>
+</body>
+</html>
